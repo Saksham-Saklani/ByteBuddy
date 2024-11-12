@@ -14,7 +14,7 @@ import {
   } from "@google/generative-ai"
   
 
-  const apiKey = AIzaSyB4GZLtRPpKkhICLPbRcZ-IgMJXLXYczzg
+  const apiKey = "AIzaSyB4GZLtRPpKkhICLPbRcZ-IgMJXLXYczzg"
 
   const genAI = new GoogleGenerativeAI(apiKey);
   
