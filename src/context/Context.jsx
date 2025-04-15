@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import ReactMarkdown from 'react-markdown';
 import run from "../config/gemini";
 
 export const Context = createContext();
@@ -53,8 +54,17 @@ const ContextProvider = (props) => {
         }
        }
        let newResponse2 = newResponse.split("*").join("</br>");
+       
+       let numbers = ["1.", "2.", "3.", "4.", "5.", "6.", "7.", "8.", "9."];
+        
 
-        let newResponseArray = newResponse2.split(" ");
+       let formatted = newResponse2;
+
+        numbers.forEach(num => {
+             formatted = formatted.split(num).join("<br/><br/>" + num);
+        });
+
+        let newResponseArray = formatted.split(" ");
         for(let i = 0; i < newResponseArray.length; i++){
             const nextWord = newResponseArray[i];
             delayPara(i,nextWord+" ")
