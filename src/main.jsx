@@ -4,7 +4,7 @@ import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from "@clerk/cle
 import { BrowserRouter } from "react-router-dom";
 import App from './App.jsx'
 import './index.css'
-import ContextProvider from './context/context.jsx'
+import ContextProvider from './context/Context.jsx'
 
 const PUBLISHABLE_KEY = "pk_test_bGl2ZS1zbG90aC00Ni5jbGVyay5hY2NvdW50cy5kZXYk"; 
 
