@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/context";
+import { Link } from 'react-router-dom';
+import { useUser } from "@clerk/clerk-react";
 
 const Main = () => {
 
@@ -16,11 +18,15 @@ const {
     newChat
     } = useContext(Context)
 
+    const { user } = useUser();
   return (
+    
     <div className="main">
       <div className="nav">
         <p onClick={()=>newChat()}>ByteBuddy</p>
-        <img src={assets.user_icon}></img>
+        <Link to="/dashboard">
+            <img src={user.imageUrl}></img>
+        </Link>
       </div>
 
       <div className="main-container">
@@ -53,7 +59,7 @@ const {
        </>
        :  <div className="result">
         <div className="result-title">
-            <img src={assets.user_icon} />
+            <img src={user.imageUrl} />
             <p> {recentPrompt} </p>
         </div>
         <div className="result-data">
@@ -78,8 +84,8 @@ const {
             <div className="search-box">
                 <input onChange={(e) => setInput(e.target.value)}  value={input} type="text" placeholder="Enter a prompt here" onKeyDown={(e)=>{if(e.key==='Enter'){onSent();}}} />
                 <div>
-                    <img src={assets.gallery_icon} alt="" />
-                    <img src={assets.mic_icon} alt="" />
+                    {/* <img src={assets.gallery_icon} alt="" /> */}
+                    {/* <img src={assets.mic_icon} alt="" /> */}
                    {input ? <img  onClick={() => onSent()} src={assets.send_icon} alt="" /> :null}
                 </div>
                 
